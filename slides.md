@@ -144,7 +144,7 @@ layout: default
 <div class="text-2xl font-mono font-bold text-emerald-400 mb-4">01 / Dynamic UI</div>
 
 <Transform :scale="0.5" class="w-[200%]">
-  <IsaWizardEmbed height="900px" :configUrl="`${$slidev.configs.base ?? '/'}dynamic-ui-config.json`" />
+  <IsaWizardEmbed height="900px" configUrl="/dynamic-ui-config.json" />
 </Transform>
 
 ---
@@ -450,7 +450,7 @@ layout: default
 ---
 
 <Transform :scale="0.5" class="w-[200%]">
-  <IsaWizardEmbed height="1000px" :configUrl="`${$slidev.configs.base ?? '/'}nested-config.json`" />
+  <IsaWizardEmbed height="1000px" configUrl="/nested-config.json" />
 </Transform>
 
 ---

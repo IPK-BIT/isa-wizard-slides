@@ -11,6 +11,10 @@ const emit = defineEmits(['finish'])
 
 const instanceId = `isa-wizard-${Math.random().toString(36).slice(2)}-${Date.now()}`
 
+// Vite exposes the configured build/deploy base here (e.g. '/your-repo/' on
+// GH Pages, '/' in local dev). Route asset paths through this instead of
+// hardcoding a leading '/' — the srcdoc iframe resolves absolute paths
+// against the parent page's origin, not the site's base path.
 const base = import.meta.env.BASE_URL
 
 const wizardAttrHtml = computed(() => {
@@ -18,7 +22,15 @@ const wizardAttrHtml = computed(() => {
     const json = JSON.stringify(props.config).replace(/'/g, '&#39;')
     return `config='${json}'`
   }
-  return `config-url="${props.configUrl.replace(/"/g, '&quot;')}"`
+  return `config-url="${resolvedConfigUrl.value.replace(/"/g, '&quot;')}"`
+})
+
+// Treat configUrl as relative to the site base, so callers can keep writing
+// e.g. configUrl="/dynamic-ui-config.json" and it resolves correctly both in
+// local dev (base '/') and on GH Pages (base '/your-repo/').
+const resolvedConfigUrl = computed(() => {
+  const path = props.configUrl.replace(/^\/+/, '')
+  return `${base}${path}`
 })
 
 const srcdoc = computed(() => `<!DOCTYPE html>
