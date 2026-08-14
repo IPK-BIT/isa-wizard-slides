@@ -11,6 +11,8 @@ const emit = defineEmits(['finish'])
 
 const instanceId = `isa-wizard-${Math.random().toString(36).slice(2)}-${Date.now()}`
 
+const base = import.meta.env.BASE_URL
+
 const wizardAttrHtml = computed(() => {
   if (props.config) {
     const json = JSON.stringify(props.config).replace(/'/g, '&#39;')
@@ -34,7 +36,7 @@ const srcdoc = computed(() => `<!DOCTYPE html>
 <script src="https://ts4nfdi.github.io/terminology-service-suite/js-modules/latest/terminology-service-suite.js"><\/script>
 
 <script type="module">
-  import '/isa-wizard/widget.mjs'
+  import ${JSON.stringify(`${base}isa-wizard/widget.mjs`)}
 
   const INSTANCE_ID = ${JSON.stringify(instanceId)}
   const el = document.getElementById('wizard')
@@ -121,8 +123,8 @@ const srcdoc = computed(() => `<!DOCTYPE html>
       injectThemeHostVars(root)
       injectStylesheetLink(root, 'https://ts4nfdi.github.io/terminology-service-suite/js-modules/latest/terminology-service-suite.css')
       await Promise.all([
-        injectCss(root, '/isa-wizard/style.css'),
-        injectCss(root, '/isa-wizard/isa-wizard-2.css'),
+        injectCss(root, ${JSON.stringify(`${base}isa-wizard/style.css`)}),
+        injectCss(root, ${JSON.stringify(`${base}isa-wizard/isa-wizard-2.css`)}),
       ])
     }
 

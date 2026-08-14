@@ -82,56 +82,6 @@ layout: default
 layout: default
 ---
 
-# The FAIRness Problem
-
-<div class="grid grid-cols-2 gap-8 mt-4">
-
-<!-- Left Persona: Postdoc Paul -->
-<div class="border border-green-500/30 rounded-xl p-4 bg-green-500/5">
-  <div class="flex items-center gap-4 mb-4">
-    <img class="rounded-full w-32" src="/paul.png" />
-    <div>
-      <h3 class="text-xl font-bold text-green-600 dark:text-green-400 m-0">Postdoc Paul</h3>
-      <p class="text-xs opacity-75 m-0 italic">The Overwhelmed Researcher</p>
-    </div>
-  </div>
-
-  <ul class="space-y-2 text-sm">
-    <li>Wants to publish and move to the next experiment</li>
-    <li>Forced into cryptic, multi-tab metadata spreadsheets</li>
-    <li>Sees <strong>FAIR compliance</strong> as an administrative tax</li>
-  </ul>
-</div>
-
-<!-- Right Persona: Data Manager Doro -->
-<div class="border border-red-500/30 rounded-xl p-4 bg-red-500/5">
-  <div class="flex items-center gap-4 mb-4">
-    <img class="rounded-full w-32" src="/doro.png" />
-    <div>
-      <h3 class="text-xl font-bold text-red-600 dark:text-red-400 m-0">Data Manager Doro</h3>
-      <p class="text-xs opacity-75 m-0 italic">The Compliance Steward</p>
-    </div>
-  </div>
-
-  <ul class="space-y-2 text-sm">
-    <li>Enforces institutional and repository standards</li>
-    <li>Fights broken syntax, missing fields, & typos</li>
-    <li>Spends time playing "spreadsheet detective"</li>
-  </ul>
-</div>
-
-</div>
-
-<div class="mt-4 text-center bg-gray-500/10 p-4 rounded-lg">
-  <p class="text-sm font-semibold m-0">
-    <strong>The Result:</strong> Both want reproducible science, but rigid manual formats work against them both. <em>A shared, guided workflow can serve both needs at once.</em>
-  </p>
-</div>
-
----
-layout: default
----
-
 # The Root of the Conflict: The ISA Standard
 
 <div class="grid grid-cols-2 gap-8 mt-8 items-center">
