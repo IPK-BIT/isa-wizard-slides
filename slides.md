@@ -11,7 +11,7 @@ defaults:
 comark: true
 duration: 25min
 addons:
-  - ./slidev-addon-qrcode
+  - slidev-addon-qrcode
   - window-mockup
   - fancy-arrow
 ---
@@ -223,6 +223,7 @@ layout: default
       "title": "Study Information",
       "texts": ["Please provide the following information about your study."],
       "fields": []
+    }
 }
 ```
 ```json

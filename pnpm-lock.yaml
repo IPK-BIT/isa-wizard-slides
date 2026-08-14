@@ -32,6 +32,9 @@ importers:
       slidev-addon-livecode:
         specifier: ^2.1.2
         version: 2.1.2(@slidev/client@52.18.0(@modelcontextprotocol/sdk@1.29.0(zod@3.25.76))(@nuxt/kit@3.21.9)(@vue/compiler-sfc@3.5.40)(cac@7.0.0)(lightningcss@1.33.0)(rolldown@1.1.5)(srvx@0.12.4)(vite@8.1.5(@types/node@22.20.1)(jiti@2.7.0)(yaml@2.9.0)))(@slidev/types@52.18.0(@nuxt/kit@3.21.9)(@vue/compiler-sfc@3.5.40)(rolldown@1.1.5)(typescript@6.0.3)(vite@8.1.5(@types/node@22.20.1)(jiti@2.7.0)(yaml@2.9.0)))(coderaft@0.0.41)(vue@3.5.40(typescript@6.0.3))
+      slidev-addon-qrcode:
+        specifier: file:./slidev-addon-qrcode
+        version: file:slidev-addon-qrcode(vue@3.5.40(typescript@6.0.3))
       slidev-addon-window-mockup:
         specifier: ^0.3.1
         version: 0.3.1(typescript@6.0.3)
@@ -2736,6 +2739,11 @@ packages:
     resolution: {integrity: sha512-uxFIHU0YlHYhDQtV4R9J6a52SLx28BCjT+4ieh7IGbgwVJWO+km431c4yRlREUAsAmt/uMjQUyQHNEPf0M39CA==}
     engines: {node: '>=6'}
 
+  qrcode.vue@3.10.0:
+    resolution: {integrity: sha512-1bjeBds9hRKMszZuBuYQZor9HdJYWtb0S44HG1JofZ9uicpJpdF+TtDvqo3+2ZlH0k80WVIkmiKB4hq0/N6/rA==}
+    peerDependencies:
+      vue: ^3.0.0
+
   qs@6.15.3:
     resolution: {integrity: sha512-O9gl3zCl5h5blw1KGUzQKhA5oUXSl8rwUIM5o0S3nCXMliSvy5Dzx7/DJcI+SwgICv+IneSZwhBh1oSyEHA71A==}
     engines: {node: '>=0.6'}
@@ -2916,6 +2924,10 @@ packages:
       '@slidev/types': '>=52.0.0'
       coderaft: '>=0.0.25'
       vue: '>=3.4.0'
+
+  slidev-addon-qrcode@file:slidev-addon-qrcode:
+    resolution: {directory: slidev-addon-qrcode, type: directory}
+    engines: {slidev: '>=0.32.1'}
 
   slidev-addon-window-mockup@0.3.1:
     resolution: {integrity: sha512-9IoKlPtpzb2suc05uUc5CZOnwBgeoDdZsbDpRlYs2fgy9pz+rf87osSqijLBVORibUUmSMNAnqNAJvKLGEQcpw==}
@@ -6685,6 +6697,10 @@ snapshots:
 
   punycode.js@2.3.1: {}
 
+  qrcode.vue@3.10.0(vue@3.5.40(typescript@6.0.3)):
+    dependencies:
+      vue: 3.5.40(typescript@6.0.3)
+
   qs@6.15.3:
     dependencies:
       es-define-property: 1.0.1
@@ -6915,6 +6931,13 @@ snapshots:
       '@slidev/types': 52.18.0(@nuxt/kit@3.21.9)(@vue/compiler-sfc@3.5.40)(rolldown@1.1.5)(typescript@6.0.3)(vite@8.1.5(@types/node@22.20.1)(jiti@2.7.0)(yaml@2.9.0))
       coderaft: 0.0.41
       vue: 3.5.40(typescript@6.0.3)
+
+  slidev-addon-qrcode@file:slidev-addon-qrcode(vue@3.5.40(typescript@6.0.3)):
+    dependencies:
+      '@slidev/theme-default': 0.25.0
+      qrcode.vue: 3.10.0(vue@3.5.40(typescript@6.0.3))
+    transitivePeerDependencies:
+      - vue
 
   slidev-addon-window-mockup@0.3.1(typescript@6.0.3):
     dependencies:
