@@ -39,7 +39,7 @@ layout: default
 <!-- Left Persona: Postdoc Paul -->
 <div class="border border-emerald-500/30 rounded-xl p-4 bg-emerald-500/5">
   <div class="flex items-center gap-4 mb-4">
-    <img class="rounded-full w-32" src="/paul.png" />
+    <img class="rounded-full w-32 h-32 object-cover" src="/paul.png" />
     <div>
       <h3 class="text-xl font-bold text-emerald-600 dark:text-emerald-400 m-0">Postdoc Paul</h3>
       <p class="text-xs opacity-75 m-0 italic">The Researcher</p>
@@ -56,7 +56,7 @@ layout: default
 <!-- Right Persona: Data Manager Doro -->
 <div class="border border-red-500/30 rounded-xl p-4 bg-red-500/5">
   <div class="flex items-center gap-4 mb-4">
-    <img class="rounded-full w-32" src="/doro.png" />
+    <img class="rounded-full w-32 h-32 object-cover" src="/doro.png" />
     <div>
       <h3 class="text-xl font-bold text-red-600 dark:text-red-300 m-0">Data Manager Doro</h3>
       <p class="text-xs opacity-75 m-0 italic">The Compliance Steward</p>
@@ -144,7 +144,7 @@ layout: default
 <div class="text-2xl font-mono font-bold text-emerald-400 mb-4">01 / Dynamic UI</div>
 
 <Transform :scale="0.5" class="w-[200%]">
-  <IsaWizardEmbed height="900px" configUrl="/dynamic-ui-config.json" />
+  <IsaWizardEmbed height="900px" :configUrl="`${$slidev.configs.base ?? '/'}dynamic-ui-config.json`" />
 </Transform>
 
 ---
@@ -450,7 +450,7 @@ layout: default
 ---
 
 <Transform :scale="0.5" class="w-[200%]">
-  <IsaWizardEmbed height="1000px" configUrl="/nested-config.json" />
+  <IsaWizardEmbed height="1000px" :configUrl="`${$slidev.configs.base ?? '/'}nested-config.json`" />
 </Transform>
 
 ---
