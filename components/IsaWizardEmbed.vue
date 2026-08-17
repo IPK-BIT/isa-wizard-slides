@@ -86,33 +86,35 @@ const srcdoc = computed(() => `<!DOCTYPE html>
     el.style.setProperty('min-height', '100%', 'important')
     el.style.setProperty('overflow', 'hidden', 'important')
 
-    const root = el.widgetShadowRoot
-    const container = root?.querySelector('#widget-container')
-    if (container instanceof HTMLElement) {
-      container.style.setProperty('display', 'flex', 'important')
-      container.style.setProperty('flex-direction', 'column', 'important')
-      container.style.setProperty('width', '100%', 'important')
-      container.style.setProperty('height', '100%', 'important')
-      container.style.setProperty('min-height', '0', 'important')
-      container.style.setProperty('overflow', 'hidden', 'important')
+    const root = el.shadowRoot
+    // The widget's shadow DOM is a plain div containing a header and a main —
+    // there's no #widget-container wrapper to hook. Every ancestor between
+    // <main> and the shadow root has auto height, so a percentage height on
+    // main or the scroller below is a no-op until each of those ancestors
+    // gets an explicit height to resolve the percentage against.
+    const main = root?.querySelector('main')
+    let ancestor = main?.parentElement
+    while (ancestor instanceof HTMLElement) {
+      ancestor.style.setProperty('display', 'flex', 'important')
+      ancestor.style.setProperty('flex-direction', 'column', 'important')
+      ancestor.style.setProperty('width', '100%', 'important')
+      ancestor.style.setProperty('height', '100%', 'important')
+      ancestor.style.setProperty('min-height', '0', 'important')
+      ancestor.style.setProperty('overflow', 'hidden', 'important')
+      ancestor = ancestor.parentElement
+    }
 
-      const rootNode = container.firstElementChild
-      if (rootNode instanceof HTMLElement) {
-        rootNode.style.setProperty('display', 'flex', 'important')
-        rootNode.style.setProperty('flex-direction', 'column', 'important')
-        rootNode.style.setProperty('width', '100%', 'important')
-        rootNode.style.setProperty('height', '100%', 'important')
-        rootNode.style.setProperty('min-height', '0', 'important')
-        rootNode.style.setProperty('overflow', 'hidden', 'important')
+    const header = root?.querySelector('header')
+    if (header instanceof HTMLElement) {
+      header.style.setProperty('flex', '0 0 auto', 'important')
+    }
 
-        const main = rootNode.querySelector('main')
-        if (main instanceof HTMLElement) {
-          main.style.setProperty('height', '100%', 'important')
-          main.style.setProperty('min-height', '0', 'important')
-          main.style.setProperty('overflow', 'hidden', 'important')
-          main.style.setProperty('grid-template-rows', '0.25rem minmax(0, 1fr)', 'important')
-        }
-      }
+    if (main instanceof HTMLElement) {
+      main.style.setProperty('flex', '1 1 auto', 'important')
+      main.style.setProperty('height', 'auto', 'important')
+      main.style.setProperty('min-height', '0', 'important')
+      main.style.setProperty('overflow', 'hidden', 'important')
+      main.style.setProperty('grid-template-rows', '0.25rem minmax(0, 1fr)', 'important')
     }
 
     const scroller = root?.querySelector('.overflow-y-auto')
@@ -128,15 +130,13 @@ const srcdoc = computed(() => `<!DOCTYPE html>
   customElements.whenDefined('isa-wizard').then(async () => {
     await new Promise((r) => requestAnimationFrame(r))
 
-    const root = el.widgetShadowRoot
+    const root = el.shadowRoot
     if (!root) {
       console.warn('[IsaWizardEmbed/iframe] no shadow root found on <isa-wizard> — widget may not have connected yet.')
     } else {
       injectThemeHostVars(root)
-      injectStylesheetLink(root, 'https://ts4nfdi.github.io/terminology-service-suite/js-modules/latest/terminology-service-suite.css')
       await Promise.all([
         injectCss(root, ${JSON.stringify(`${base}isa-wizard/style.css`)}),
-        injectCss(root, ${JSON.stringify(`${base}isa-wizard/isa-wizard-2.css`)}),
       ])
     }
 
