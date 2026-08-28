@@ -138,6 +138,21 @@ Image adapted from https://arc-rdm.org
 layout: default
 ---
 
+<div class="h-full flex flex-col justify-center items-center text-center"> 
+  <mdi-chat-question-outline class="text-7xl text-teal-600 mb-8" />
+  <span class="text-teal-600 text-3xl">
+  Ask questions. Not syntax.
+  </span>
+  <div class="mt-6 text-xl opacity-80 max-w-2xl"> 
+  Empower researchers to seamlessly capture ontology-aligned metadata through an intuitive survey interface while enabling Data Stewards to iteratively adapt parameters and ISA data mappings as community standards evolve.
+  </div> 
+</div>
+
+
+---
+layout: default
+---
+
 # Architecture & Design Principles
 
 <div class="mt-12 space-y-8 max-w-5xl mx-auto">
@@ -145,7 +160,7 @@ layout: default
     <div class="text-xl font-mono font-bold text-emerald-400">01 / Dynamic UI</div>
     <div>
       <p class="text-sm opacity-75 m-0">
-        The user interface is entirely separated from the core codebase. Custom wizards render on-the-fly directly from configurations with zero application adjustments required.
+        The System MUST provide reusable components that automatically synchronize with the ISA-JSON on the client-side state management.
       </p>
     </div>
   </div>
@@ -153,7 +168,7 @@ layout: default
     <div class="text-xl font-mono font-bold text-red-400">02 / Stewardship</div>
     <div>
       <p class="text-sm opacity-75 m-0">
-        Data stewards dictate questions, parameters, and mappings, ensuring researchers are automatically guided down fully compliant pathways.
+        The System MUST offer Data Stewards the ability to design the questionnaire, predefined parameters, and mapping to the ISA data model.
       </p>
     </div>
   </div>
@@ -161,12 +176,15 @@ layout: default
     <div class="text-xl font-mono font-bold text-blue-400">03 / Validation</div>
     <div>
       <p class="text-sm opacity-75 m-0">
-        Dataset structures are programmatically generated straight from ISA JSON schemas, guaranteeing absolute structural validity by design.
+        The System MUST ensure that datasets are syntactically valid by design, relying on the official ISA-JSON schemas and programmatic instantiation.
       </p>
     </div>
   </div>
 </div>
 
+<div class="absolute bottom-4 left-8 text-[0.5rem] italic text-neutral-500">
+* according to https://www.rfc-editor.org/info/rfc2119/
+</div>
 ---
 layout: default
 ---
@@ -486,14 +504,6 @@ clicks: 3
 layout: default
 ---
 
-<Transform :scale="0.5" class="w-[200%]">
-  <IsaWizardEmbed height="1000px" configUrl="/nested-config.json" />
-</Transform>
-
----
-layout: default
----
-
 # Conclusion
 
 <div class="mt-12 space-y-8 max-w-5xl mx-auto">
@@ -501,15 +511,15 @@ layout: default
     <div class="text-xl font-mono font-bold text-emerald-400">Recap</div>
     <div>
       <p class="text-sm opacity-75 m-0">
-        The ISA Wizard turns FAIR compliance from a spreadsheet battle into a guided, config-driven questionnaire — bridging Postdoc Paul and Data Manager Doro.
+        The ISA Wizard turns FAIR compliance from a spreadsheet battle into an intuitive questionnaire, bridging the gap between researchers and data managers.
       </p>
     </div>
   </div>
   <div class="grid grid-cols-[220px_1fr] gap-8 items-center">
-    <div class="text-xl font-mono font-bold text-blue-400">Proven Across Domains</div>
+    <div class="text-xl font-mono font-bold text-blue-400">Uses Across Domains</div>
     <div>
       <p class="text-sm opacity-75 m-0">
-        One tool, one architecture — already serving MIAPPE, BrAPI4PSI, and MIMSA use cases, with more standards addable via config alone.
+        A single versatile tool already powering MIAPPE, BrAPI4PSI, and MIMSA use cases, with additional standards seamlessly integratable through simple configuration updates.
       </p>
     </div>
   </div>
@@ -517,7 +527,7 @@ layout: default
     <div class="text-xl font-mono font-bold text-red-400">Open Source</div>
     <div>
       <p class="text-sm opacity-75 m-0">
-        Available now on GitHub — try it, adapt the config for your own standard, or contribute.
+        Fully open-source on GitHub, explore the repository, test the tool, adapt the configurations for your own community standards, or join in and contribute.
       </p>
     </div>
   </div>
@@ -544,3 +554,11 @@ Sarah Fischer-Zielke · Rica Rehfeld · Marc Heuermann · Klára Panzarová · U
 />
 
 <span class="absolute top-2/3 left-1/4 p-2" data-id="label">Scan Me!</span>
+
+---
+layout: default
+---
+
+<Transform :scale="0.5" class="w-[200%]">
+  <IsaWizardEmbed height="1000px" configUrl="/nested-config.json" />
+</Transform>
