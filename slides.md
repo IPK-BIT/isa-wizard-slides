@@ -79,29 +79,59 @@ layout: default
 </div>
 
 ---
-layout: default
+layout: two-cols-header
+layoutClass: gap-x-8
 ---
 
-# The Root of the Conflict: The ISA Standard
+# The ISA Standard
 
-<div class="grid grid-cols-2 gap-8 mt-8 items-center">
-  <div class="space-y-4 text-sm">
-    <p>
-      Why are Postdoc Paul and Data Manager Doro at odds? It all comes down to the metadata standard they are forced to use: <strong>The ISA Framework</strong> (Investigation, Study, Assay).
-    </p>
-    <p>
-      The ISA model is globally recognized as the gold standard for FAIR life science data. It cleanly structures complex experiments into three hierarchical layers.
-    </p>
-    <p class="text-green-400 font-semibold">
-      For Paul, structuring experiments into this rigid hierarchy feels like an administrative trap.
-    </p>
-    <p class="text-red-400 font-semibold">
-      For Doro, ISA is mandatory because it makes data machine-readable and repository-ready.
-    </p>
-  </div>
-  <div class="border border-blue-500/30 rounded-xl p-6 bg-blue-500/5">
-    <img src="/isa.png"/>
-  </div>
+Investigation – Study – Assay: a general-purpose metadata framework for life science experiments
+
+::left::
+
+![ISA hierarchical structure](./isa.png)
+
+<div class="text-xs opacity-70 mt-1">
+Investigation → Studies → Assays — each layer nests material/samples, characteristics, a protocol and its process parameters
+</div>
+
+<div class="absolute bottom-2 left-8 text-[.5rem] italic text-neutral-500">
+Image adapted from https://arc-rdm.org
+</div>
+
+
+
+::right::
+
+<div class="text-sm leading-snug">
+
+<h3 class="text-teal-600 font-semibold tracking-wide uppercase text-xs mb-2">Two formats</h3>
+
+<div class="flex items-start gap-2 mb-1.5">
+  <mdi-file-table-outline class="text-teal-600 mt-0.5 shrink-0" />
+  <div><span class="font-semibold">ISA-Tab</span> — tab-separated flat files, the original, human-readable format</div>
+</div>
+
+<div class="flex items-start gap-2 mb-5">
+  <mdi-code-json class="text-teal-600 mt-0.5 shrink-0" />
+  <div><span class="font-semibold">ISA-JSON</span> — JSON(-LD), API/DB-friendly, basis for application development</div>
+</div>
+
+<h3 class="text-teal-600 font-semibold tracking-wide uppercase text-xs mb-2">Good to know</h3>
+
+<div class="flex items-start gap-2 mb-1.5">
+  <mdi-earth class="opacity-60 mt-0.5 shrink-0" />
+  <span>Domain-agnostic — genomics, metabolomics, plant sciences, ...</span>
+</div>
+<div class="flex items-start gap-2 mb-1.5">
+  <mdi-sitemap class="opacity-60 mt-0.5 shrink-0" />
+  <span>Models the whole workflow, not just the data</span>
+</div>
+<div class="flex items-start gap-2">
+  <mdi-check-decagram class="opacity-60 mt-0.5 shrink-0" />
+  <span>FAIR backbone, reused by standards like MIAPPE</span>
+</div>
+
 </div>
 
 ---
@@ -274,6 +304,13 @@ function addPublication() {
 
 - Every ISA-JSON object is created programmatically from its ISA-JSON schema
 - Export to ISA-Tab or ARC implemented with `isa4js` and `Arctrl`
+
+<div class="flex space-x-2 items-center">
+
+<img class="w-1/3 h-fit" src="/isa4js.DM3Laubr_27H64G.webp" />
+<img class="w-1/2 h-fit" src="/ARCtrl_horizontal.png" />
+
+</div>
 
 ::right::
 
