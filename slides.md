@@ -89,7 +89,7 @@ Investigation – Study – Assay: a general-purpose metadata framework for life
 
 ::left::
 
-![ISA hierarchical structure](./isa.png)
+![ISA hierarchical structure](/isa.png)
 
 <div class="text-xs opacity-70 mt-1">
 Investigation → Studies → Assays — each layer nests material/samples, characteristics, a protocol and its process parameters
