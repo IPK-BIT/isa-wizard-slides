@@ -72,9 +72,10 @@ layout: default
 
 </div>
 
-<div class="mt-4 text-center bg-gray-500/10 p-4 rounded-lg">
-  <p class="text-sm font-semibold m-0">
-    Paul and Doro are both working toward reproducible science — they just need a workflow that supports both of their goals at once.
+<div class="mt-6 bg-gray-500/5 border border-gray-500/20 rounded-xl text-center shadow-sm">
+  <p class="text-xs uppercase tracking-widest text-gray-500 dark:text-gray-400 font-semibold mb-1">The Goal</p>
+  <p class="text-lg font-bold text-gray-800 dark:text-gray-200 m-0">
+    We need a tool to make FAIR compliance a habit, not a chore.
   </p>
 </div>
 
