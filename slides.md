@@ -36,7 +36,6 @@ layout: default
 
 <div class="grid grid-cols-2 gap-8 mt-4">
 
-<!-- Left Persona: Postdoc Paul -->
 <div class="border border-emerald-500/30 rounded-xl p-4 bg-emerald-500/5">
   <div class="flex items-center gap-4 mb-4">
     <img class="rounded-full w-32 h-32 object-cover" src="/paul.png" />
@@ -53,7 +52,6 @@ layout: default
   </ul>
 </div>
 
-<!-- Right Persona: Data Manager Doro -->
 <div class="border border-red-500/30 rounded-xl p-4 bg-red-500/5">
   <div class="flex items-center gap-4 mb-4">
     <img class="rounded-full w-32 h-32 object-cover" src="/doro.png" />
@@ -392,7 +390,6 @@ clicks: 3
 
 <div class="flex h-[450px] w-full gap-4">
   
-  <!-- MIAPPE Box (Step 0) -->
   <div 
     @click="$slidev.nav.clicks = 0"
     class="transition-all duration-300 ease-in-out rounded-lg border overflow-hidden flex flex-col items-center"
@@ -403,7 +400,6 @@ clicks: 3
       class="transition-all duration-300 object-contain flex-shrink-0" 
       :class="$slidev.nav.clicks === 0 ? 'w-40 h-40' : 'w-10 h-10'" 
     />
-    <!-- Expanded Content -->
     <div v-show="$slidev.nav.clicks === 0" class="w-full mt-4 flex-grow">
       <h3 class="text-center w-full font-bold text-xl mb-4">MIAPPE</h3>
       <ul class="list-disc pl-5">
@@ -411,7 +407,6 @@ clicks: 3
         <li>Simplify capture of study design, environmental conditions and measured traits</li>
       </ul>
     </div>
-    <!-- Collapsed Content (Book Spine) -->
     <div v-show="$slidev.nav.clicks !== 0" class="flex-grow flex items-center justify-center mt-4">
       <h3 class="whitespace-nowrap font-bold text-lg tracking-wider" style="writing-mode: vertical-rl; transform: rotate(180deg);">
         MIAPPE
@@ -419,7 +414,6 @@ clicks: 3
     </div>
   </div>
 
-  <!-- BrAPI4PSI Box (Step 1) -->
   <div 
     @click="$slidev.nav.clicks = 1"
     class="transition-all duration-300 ease-in-out rounded-lg border overflow-hidden flex flex-col items-center"
@@ -430,7 +424,6 @@ clicks: 3
       class="transition-all duration-300 object-contain flex-shrink-0" 
       :class="$slidev.nav.clicks === 1 ? 'w-40 h-40' : 'w-10 h-10'" 
     />
-    <!-- Expanded Content -->
     <div v-show="$slidev.nav.clicks === 1" class="w-full mt-4 flex-grow">
       <h3 class="text-center w-full font-bold text-xl mb-4">BrAPI4PSI</h3>
       <ul class="list-disc pl-5">
@@ -438,7 +431,6 @@ clicks: 3
         <li>Support High-Throughput Phenotyping Facilities</li>
       </ul>
     </div>
-    <!-- Collapsed Content (Book Spine) -->
     <div v-show="$slidev.nav.clicks !== 1" class="flex-grow flex items-center justify-center mt-4">
       <h3 class="whitespace-nowrap font-bold text-lg tracking-wider" style="writing-mode: vertical-rl; transform: rotate(180deg);">
         BrAPI4PSI
@@ -446,7 +438,6 @@ clicks: 3
     </div>
   </div>
 
-  <!-- MIMSA Box (Step 2) -->
   <div 
     @click="$slidev.nav.clicks = 2"
     class="transition-all duration-300 ease-in-out rounded-lg border overflow-hidden flex flex-col items-center"
@@ -457,7 +448,6 @@ clicks: 3
       class="transition-all duration-300 object-contain flex-shrink-0" 
       :class="$slidev.nav.clicks === 2 ? 'w-40 h-40' : 'w-10 h-10'" 
     />
-    <!-- Expanded Content -->
     <div v-show="$slidev.nav.clicks === 2" class="w-full mt-4 flex-grow">
       <h3 class="text-center w-full font-bold text-xl mb-4">MIMSA</h3>
       <ul class="list-disc pl-5">
@@ -465,7 +455,6 @@ clicks: 3
         <li>Facilitates metadata capture for animal studies, ensuring interdisciplinary interoperability</li>
       </ul>
     </div>
-    <!-- Collapsed Content (Book Spine) -->
     <div v-show="$slidev.nav.clicks !== 2" class="flex-grow flex items-center justify-center mt-4">
       <h3 class="whitespace-nowrap font-bold text-lg tracking-wider" style="writing-mode: vertical-rl; transform: rotate(180deg);">
         MIMSA
@@ -483,7 +472,6 @@ clicks: 3
       class="transition-all duration-300 object-contain flex-shrink-0" 
       :class="$slidev.nav.clicks === 3 ? 'w-40 h-40' : 'w-10 h-10'" 
     />
-    <!-- Expanded Content -->
     <div v-show="$slidev.nav.clicks === 3" class="w-full mt-4 flex-grow">
       <h3 class="text-center w-full font-bold text-xl mb-4">What's Next</h3>
       <ul class="list-disc pl-5">
@@ -491,7 +479,6 @@ clicks: 3
         <li>Looking for incubator projects and new use cases — reach out if your domain needs FAIR-compliant metadata collection</li>
       </ul>
     </div>
-    <!-- Collapsed Content (Book Spine) -->
     <div v-show="$slidev.nav.clicks !== 3" class="flex-grow flex items-center justify-center mt-4">
       <h3 class="whitespace-nowrap font-bold text-lg tracking-wider" style="writing-mode: vertical-rl; transform: rotate(180deg);">
         Future
