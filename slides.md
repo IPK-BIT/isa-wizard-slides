@@ -28,6 +28,10 @@ Sarah Fischer-Zielke, Rica Rehfeld, Marc Heuermann, Klára Panzarová, Uwe Schol
 nfdi4ls - IB2026, Gatersleben, 03. September 2026
 </div>
 
+<!--
+FAIR data compliance is supposed to unlock scientific discovery, but for most researchers, it currently feels like an administrative tax on top of the actual science.
+-->
+
 ---
 layout: default
 ---
@@ -76,6 +80,13 @@ layout: default
     We need a tool to make FAIR compliance a habit, not a chore.
   </p>
 </div>
+
+<!--
+I want to introduce to you Postdoc Paul and Data Manager Doro our personas within NFDI4Biodiversity. 
+Paul just finished his experiment and wants now to publish the dataset so that he can move on to the next one. Doro send him an old ISA Tab dataset with the instruction to take a look on it and bring his own data into the ISA Tab format. He then works through multiple spreadsheets with for him unclear formatting. Naturally he sees FAIR compliance as an administrative tax on top of his actual research. 
+Doro on the other side just wants to ensure that the data meets the institutional and repository data policies. She regularly finds missing fields, syntax errors and inconsistencies in the dataset and has to chase down Paul to get him to fix these errrors. So she spends a lot of time as a "spreadsheet detective".
+To help both Paul and Doro, we decided that we need a tool to make FAIR compliance a habit, not a chore.
+-->
 
 ---
 layout: two-cols-header
@@ -133,6 +144,15 @@ Image adapted from https://arc-rdm.org
 
 </div>
 
+<!--
+But first, let me give you a short overview of the ISA Standard.
+ISA is a general-purpose metadata framework for life science experiments. 
+It consists of three hierarchical layers. The investigation deals with the administrative metadata. Who is involved? What was the experiment about? The studies document how the materials was processed into samples. And assays describe how those samples were processed to generate the data. Materials and Samples can be described in more details through characteristics while protocols act as blueprints for the processes defining the parameters of a experimental step.
+Classic ISA can be formatted in two formats. On the one side, there is ISA Tab as a spreadsheet based, human-readable format. On the other side, ISA-JSON is more API/DB friendly and basis for application development. 
+The great thing about ISA is that it is domain agnostic. So you can use it in different omics contexts or even across different subdomains of life science. ISA is generic but yet powerful enough to model the whole experimental workflow from when you enter the genebank to select material to the point where you generate a plot for your journal publication. ISA acts as a FAIR backbone that can and is reused by other standards like MIAPPE.
+However, this also makes it more complex for wet lab researchers to annotate their experiments. For example, in which ISA Tab file would you annotate MIAPPE's Start Date of Study? Obviously, in the investigation file.
+-->
+
 ---
 layout: default
 ---
@@ -147,6 +167,10 @@ layout: default
   </div> 
 </div>
 
+<!--
+That is the reason why we came to the conclusion that it is more practical to ask the researcher questions instead of syntax. 
+The ISA Wizard has therefore two objectives: It empowers researchers to capure ontology-aligned metadata intuitively. And it enables data stewards to provide tooling around their domain standards.
+-->
 
 ---
 layout: default
@@ -184,6 +208,14 @@ layout: default
 <div class="absolute bottom-4 left-8 text-[0.5rem] italic text-neutral-500">
 * according to https://www.rfc-editor.org/info/rfc2119/
 </div>
+
+<!--
+To guide the development, we have three main design principles that influence the ISA Wizard's architecture.
+First, the Wizard provides reusable components that display and modify the ISA JSON dataset.
+Second, the Wizard allows data stewards to define questionnaires tailored to their researchers needs, wording and domain standards.
+And last, the ISA Wizard ensures that the dataset is syntactically valid by design, relying on the ISA JSON schemas
+-->
+
 ---
 layout: default
 ---
@@ -193,6 +225,16 @@ layout: default
 <Transform :scale="0.5" class="w-[200%]">
   <IsaWizardEmbed height="900px" configUrl="/dynamic-ui-config.json" />
 </Transform>
+
+<!--
+When we jump into the wizard, we see that the UI is split into three columns. On the left side we have some navigation indicators, currently our progress is at 0% in the questionnaire. In the middle we see the current step of the questionnaire. An on the right side we see the current ISA JSON dataset. This is only for presentation purposes. Obviously this would not be something the real instance would render. 
+In the middle form we see that it consists of seperate building blocks. If we now fill out e.g. the Investigation Identifier, we see that it automatically synchronizes the ISA JSON dataset. But we could also load an ISA JSON into the ISA Wizard and the UI would show the current version. Let's add e.g. the Investigation Title by writing into the title of the ISA JSON.
+Besides the usual one line text, multi-line text, date picker, there are also more complex components like a license picker. Selecting a license we see that it maps not to a native property of ISA JSON, but to a comment with the key License. In the ISA Wizard, we don't need the user to understand where they need to place the License. We just need them to select the appropriate license.
+Still those components are always 1:1 relationships to the ISA JSON dataset. But what if we want to manage e.g. a list of publications?
+For this we can use the Publications component. If we add a publication it will allow us to edit the relevant metadata. When we now enter a DOI, the ISA Wizard will look up the publication using OpenAlex and fill out the title, the authors and the PubMed ID for us. Unfortunately, the publication status is not delivered by OpenAlex. We thus have to look up the correct ontology term using a TS4NFDI widget.
+Similarly, the People component allows us to manage the contacts of the investigation. Here, we can also see the renaming of entities. We decided in this step to call the contacts not contacts but authors as this is the common wording in our user group. Because I hardly remember my ORCID, not to speak of the ORCID of my colleagues, the ORCID lookup allows to search for ORCIDs by the researchers name. This will then not only fill out the ORCID field, but also the name, email and affiliation.
+When we finish the questionnaire, we  end up in the central management view. From here we can export our dataset into various formats like ISA Tab, ISA JSON or ARC and take a look at the currently version of the dataset or jump into the questionnaire again to update some missing fields. We can see that there are not study templates yet configured, so let's add a study template next.
+-->
 
 ---
 layout: default
@@ -380,11 +422,21 @@ function addPublication() {
 ```
 ````
 
+<!--
+Finally, the ISA Wizard creates all ISA JSON objects programmatically. 
+For this we have lookup functions, like this `addPublication` that lookup the respective schema and generate a new object from it. You can see on the right side, the ISA JSON publication_schema, that will create the respecitive ISA JSON publication object.
+For the exports we rely on external libraries. Because ISA Tab generation in Javascript was not possible and the Python library, would require to run an additional service plus it is buggy, isa4js was implemented to handle the ISA Tab conversion. For ARC, we rely on the ARCtrl library, that Lukas presented yesterday.
+-->
+
 ---
 layout: section
 ---
 
 # Use Cases
+
+<!--
+Coming to the Use Cases or Applications of the ISA Wizard
+-->
 
 ---
 layout: default
@@ -493,6 +545,13 @@ clicks: 3
 
 </div>
 
+<!--
+The ISA Wizard started in 2022 as the MIAPPE Wizard. We wanted to create a tool that provides biologists a user-friendly tool to annotate MIAPPE compliant ISA datasets. But we then realized that we can generalize the tool, to allow MIAPPE be integrated through a configuration. This lead to the ISA Wizard being born. 
+The FAIRagro Use Case BrAPI4PSI was working on implementing a BrAPI server for the PSI software that is used by the IPK Phenosphere which you have the chance to visit this afternoon. Marc and Klara reached out to us whether the ISA Wizard could be used to provide additional metadata to this BrAPI server to implement a meaningful server.
+Currently, we work together with Sarah and Rica on the MIMSA standard. As you just learned in the talk by Sarah, MIMSA is a metadata standard for animal sciences. It is the first use case where the ISA Wizard leaves the plant science domain. During this year's ELIXIR Biohackathon, we will work on a MIMSA Wizard configuration. If you want to join, registration for online participation is still open.
+Of course, if you have any other domain or metadata standard that you want to use the ISA Wizard for, feel free to reach out to any of us.
+-->
+
 ---
 layout: default
 ---
@@ -526,6 +585,12 @@ layout: default
   </div>
 </div>
 
+<!--
+With this, we come to the end of this talk where I presented you the ISA Wizard. Our tool to streamline ISA compliance from a spreadsheet battle into an intuitve questionnaire.
+We have seen that the ISA Wizard can be used within different use cases by switching out the configuration.
+Finally, feel free to explore, test and contribute to the tool on Github.
+-->
+
 ---
 layout: end
 ---
@@ -547,6 +612,10 @@ Sarah Fischer-Zielke · Rica Rehfeld · Marc Heuermann · Klára Panzarová · U
 />
 
 <span class="absolute top-2/3 left-1/4 p-2" data-id="label">Scan Me!</span>
+
+<!--
+Thank you for your attention. If you have any questions, I will be more than happy to answer.
+-->
 
 ---
 layout: default
