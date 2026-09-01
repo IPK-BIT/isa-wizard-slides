@@ -286,22 +286,27 @@ layout: default
   "steps": [
     { <!-- ... --> },
     {
-      "title": "Study Design Descriptors",
-      "texts": [
-        "Please provide information about the design of your study using ontology annotations."
-      ],
+      "title": "Study Publications",
+      "texts": ["Please provide information about the publications related to your study."],
       "component": {
-        "type": "ontology-annotations",
-        "isaMapping": { "jsonPath": "studyDesignDescriptors" },
-        "label": "Study Design Descriptors",
-        "explanation": "Add study design descriptors."
+        "type": "publications",
+        "isaMapping": { "jsonPath": "publications" },
+        "label": "Publications",
+        "explanation": "Add publications related to your study."
       }
     }
   ]
 }
 ```
 ````
-  
+
+<!--
+To do this we simply add a "phenotyping-study" template to the configuration. A template has some metadata, such as the type, a label and a description.
+Otherwise it defines the steps. So let's add our first step.
+The step itself defines a title and some additional texts that provide more context to the user. Data stewards can also add a list of fields.
+Fields are simple 1:1 components, that are mapped to one specific ISA property. There are different types, such as text, textarea or dates. But you also seen others like e.g. the license picker.
+We also saw that the ISA Wizard has more complex components. If we add a new step, we can e.g. for our study template add a study design descriptors component.
+-->
 
 ---
 layout: two-cols-header
